@@ -1,2 +1,2 @@
-# SpringSoapWeb
-spring soap web and soap client
+# SpringRestWeb
+spring rest web and rest client
