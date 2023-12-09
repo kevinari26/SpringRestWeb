@@ -1,0 +1,3 @@
+http://esb:welcome1@10.87.225.205:8001/AMLOCK/Service/SearchAMLServiceDAO?wsdl
+http://esb:welcome1@10.87.225.205:12103/AMLOCK/Service/SearchAMLServiceDAOSvc?wsdl
+http://esb:welcome1@10.87.225.205:12103/BPM/DigitalMortgage/Service/PEFINDO?wsdl

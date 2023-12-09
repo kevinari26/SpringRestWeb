@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: SpringRestWeb
+  profiles:
+    active: development
+  jwt:
+    secret: javainuse
+#  security:
+#    basic:
+#      enabled: true
+#    user:
+#      name: user
+#      password: pass
+
+message-code-wsdl: '{
+    S001: "00|Success",
+    E001: "40|Invalid Request",
+    E002: "41|Internal Server Error",
+    E003: "14|Not Found"
+}'

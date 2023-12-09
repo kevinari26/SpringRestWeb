@@ -1,0 +1,42 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: SpringSoapClient
+  profiles:
+    active: development
+  # datasource example
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_temp?useSSL=false&serverTimezone=Asia/Jakarta&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root1234
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+wsdlClient:
+  connectTimeout: 5000
+  requestTimeout: 30000
+
+  soapWeb1:
+    endpoint: ${pomProperties.soapWeb1WsdlEndpoint}
+    packageName: ${pomProperties.soapWeb1PackageName}
+    username: user
+    password: pass
+  soapWeb2:
+    endpoint: ${pomProperties.soapWeb2WsdlEndpoint}
+    packageName: ${pomProperties.soapWeb2PackageName}
+    username: user
+    password: pass
+
+# letakkan di paling bawah (untuk keperluan plugin di file pom)
+pomProperties:
+  soapWeb1WsdlEndpoint: http://localhost:8080/ws/soapweb-1
+  soapWeb1PackageName: com.wsimport.soap1
+
+  soapWeb2WsdlFile: /src/main/resources/wsdlFiles/soapweb-2.wsdl
+  soapWeb2WsdlEndpoint: http://localhost:8080/ws/soapweb-2
+  soapWeb2PackageName: com.wsimport.soap2

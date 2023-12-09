@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<Configuration status="WARN" monitorInterval="30">-->
+<Configuration>
+    <Properties>
+        <property name="consoleLayout">%d{yyyy-MM-dd HH:mm:ss.SSS} [%15.15t] %clr{%-5level} %-40.40C - %m%n</property>
+        <property name="fileLayout">%d{yyyy-MM-dd HH:mm:ss.SSS} [%15.15t] %-5level %-40.40C - %m%n</property>
+        <!-- edit sesuai project -->
+        <property name="filePattern">springTesting_%d{yyyy-MM-dd}_%i.log</property>
+        <property name="logPath">D:\Alpabit\logs\springTesting\</property>
+        <property name="logPath1">/Alpabit/logs/springTesting/service2/</property>
+        <property name="logPath2">/Alpabit/logs/springTesting/service3/</property>
+<!--        <property name="logPath3">/alpabit/logs/be-mortgage/PCSM/</property>-->
+<!--        <property name="logPath4">/alpabit/logs/be-mortgage/engine/</property>-->
+        <property name="package1">com.kevinAri.example.service.AppService2</property>
+        <property name="package2">com.kevinAri.example.service.AppService3</property>
+<!--        <property name="package3">com.alpabit.mortgage.service.forBPM.PCSMService</property>-->
+<!--        <property name="package4">com.alpabit.mortgage.service.MortgageServiceForEngine</property>-->
+    </Properties>
+
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${consoleLayout}" />
+        </Console>
+
+        <RollingFile name="fileLog"
+                     filePattern="${logPath}${filePattern}">
+            <PatternLayout pattern="${fileLayout}" />
+            <Policies>
+                <!--                <OnStartupTriggeringPolicy />-->
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <!--            <DefaultRolloverStrategy max="1" />-->
+        </RollingFile>
+
+        <RollingFile name="fileLog1"
+                     filePattern="${logPath1}${filePattern}">
+            <PatternLayout pattern="${fileLayout}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+        </RollingFile>
+        <RollingFile name="fileLog2"
+                     filePattern="${logPath2}${filePattern}">
+            <PatternLayout pattern="${fileLayout}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+        </RollingFile>
+<!--        <RollingFile name="fileLog3"-->
+<!--                     filePattern="${logPath3}${filePattern}">-->
+<!--            <PatternLayout pattern="${fileLayout}" />-->
+<!--            <Policies>-->
+<!--                <TimeBasedTriggeringPolicy />-->
+<!--                <SizeBasedTriggeringPolicy size="10 MB" />-->
+<!--            </Policies>-->
+<!--        </RollingFile>-->
+<!--        <RollingFile name="fileLog4"-->
+<!--                     filePattern="${logPath4}${filePattern}">-->
+<!--            <PatternLayout pattern="${fileLayout}" />-->
+<!--            <Policies>-->
+<!--                <TimeBasedTriggeringPolicy />-->
+<!--                <SizeBasedTriggeringPolicy size="10 MB" />-->
+<!--            </Policies>-->
+<!--        </RollingFile>-->
+    </Appenders>
+
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="fileLog" />
+        </Root>
+
+        <Logger level="info" name="${package1}" additivity="false">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="fileLog" />
+            <AppenderRef ref="fileLog1" />
+        </Logger>
+        <Logger level="info" name="${package2}" additivity="true">
+            <AppenderRef ref="console" />
+<!--            <AppenderRef ref="fileLog" />-->
+            <AppenderRef ref="fileLog2" />
+        </Logger>
+<!--        <Logger level="info" name="${package3}" additivity="false">-->
+<!--            <AppenderRef ref="console" />-->
+<!--            <AppenderRef ref="fileLog" />-->
+<!--            <AppenderRef ref="fileLog3" />-->
+<!--        </Logger>-->
+<!--        <Logger level="info" name="${package4}" additivity="false">-->
+<!--            <AppenderRef ref="console" />-->
+<!--            <AppenderRef ref="fileLog" />-->
+<!--            <AppenderRef ref="fileLog4" />-->
+<!--        </Logger>-->
+    </Loggers>
+</Configuration>

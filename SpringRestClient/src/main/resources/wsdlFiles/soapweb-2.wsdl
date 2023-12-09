@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.kevinari.com/soapweb-2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.kevinari.com/soapweb-2" targetNamespace="http://www.kevinari.com/soapweb-2">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.kevinari.com/soapweb-2">
+
+    <xs:complexType name="ErrorSchemaXsd">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ErrorCode" type="xs:string"/>
+            <xs:element minOccurs="0" name="ErrorMessage" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Dummy2OutputSchema">
+        <xs:sequence>
+            <xs:element name="requestTime" type="xs:dateTime"/>
+            <xs:element name="responseTime" type="xs:dateTime"/>
+            <xs:element name="stringOutput" type="xs:string"/>
+            <xs:element name="integerOutput" type="xs:int"/>
+            <xs:element name="bigDecimalOutput" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Dummy2Request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="requestTime" type="xs:dateTime"/>
+                <xs:element name="stringInput" type="xs:string"/>
+                <xs:element name="integerInput" type="xs:int"/>
+                <xs:element name="bigDecimalInput" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Dummy2Response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="errorSchema" type="tns:ErrorSchemaXsd"/>
+                <xs:element minOccurs="0" name="outputSchema" type="tns:Dummy2OutputSchema"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="Dummy2Request">
+    <wsdl:part element="tns:Dummy2Request" name="Dummy2Request">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Dummy2Response">
+    <wsdl:part element="tns:Dummy2Response" name="Dummy2Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SoapWeb2Port">
+    <wsdl:operation name="Dummy2">
+      <wsdl:input message="tns:Dummy2Request" name="Dummy2Request">
+    </wsdl:input>
+      <wsdl:output message="tns:Dummy2Response" name="Dummy2Response">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoapWeb2PortSoap11" type="tns:SoapWeb2Port">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Dummy2">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="Dummy2Request">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="Dummy2Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SoapWeb2PortService">
+    <wsdl:port binding="tns:SoapWeb2PortSoap11" name="SoapWeb2PortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
