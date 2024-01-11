@@ -74,6 +74,13 @@
 			<optional>true</optional>
 		</dependency>
 
+        <!-- system monitoring -->
+        <!-- http://localhost:8082/monitoring -->
+        <dependency>
+            <groupId>net.bull.javamelody</groupId>
+            <artifactId>javamelody-spring-boot-starter</artifactId>
+            <version>1.94.0</version>
+        </dependency>
 	</dependencies>
 
 

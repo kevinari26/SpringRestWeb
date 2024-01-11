@@ -1,4 +1,4 @@
-package com.kevinAri.example.service;
+package com.kevinAri.example.controller;
 
 import com.kevinAri.example.config.security.JwtTokenUtil;
 import lombok.Getter;

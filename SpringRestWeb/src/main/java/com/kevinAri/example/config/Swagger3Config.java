@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class Swagger3Config {
-    // URL untuk akses swagger3: http://localhost:8080/swagger-ui/index.html
-    // URL untuk akses swagger2: http://localhost:8080/swagger-ui.html
+    // URL untuk akses swagger3: http://localhost:8082/swagger-ui/index.html
+    // URL untuk akses swagger2: http://localhost:8082/swagger-ui.html
     @Bean
     public OpenAPI customOpenAPI() {
         final String securitySchemeName = "bearerAuth";
