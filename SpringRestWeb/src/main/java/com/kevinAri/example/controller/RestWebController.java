@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.URISyntaxException;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -36,9 +38,9 @@ public class RestWebController {
     }
 
 
-    // testing pakai PathVariable, RequestParam, RequestBody sekaligus
+    // testing pakai headers, PathVariable, RequestParam, RequestBody sekaligus
     @PostMapping(value = "/test-all-params-type/{id}")
-    public String hello2(@PathVariable("id") Long id, @RequestParam String in1, @RequestBody JsonNode body) {
+    public String hello2(@RequestHeader Map<String, String> headers, @PathVariable("id") Long id, @RequestParam String in1, @RequestBody JsonNode body) {
         try {
             return String.format("Output: %d, %s, %s", id, in1, objectMapper.writeValueAsString(body));
         } catch (Exception e) {
@@ -52,7 +54,8 @@ public class RestWebController {
     }
 
     @PostMapping(value = "/testfile", consumes = {MediaType.ALL_VALUE})
-    public Object testFile(@RequestParam MultipartFile file) {
+    public Object testFile(@RequestParam MultipartFile file, @RequestParam String param1) throws IOException {
+        System.out.println(Arrays.toString(file.getBytes()));
         System.out.println(MediaType.MULTIPART_FORM_DATA_VALUE);
         return new ResponseEntity<>(
                 "berhasil",

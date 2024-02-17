@@ -7,6 +7,7 @@
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.authentication.AuthenticationManager;
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 //import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 //import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -49,6 +50,11 @@
 //    @Bean
 //    public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
 //        return auth.getAuthenticationManager();
+//    }
+//
+//    // bisa error tanpa config ini
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //    }
 //
 //    @Bean
